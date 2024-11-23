@@ -1,36 +1,15 @@
-
 import { createRouter, createWebHistory } from 'vue-router'
-import HomePage from './pages/HomePage.vue'
-import HostsPage from './pages/HostsPage.vue'
-import KeysPage from './pages/KeysPage.vue'
-import SettingsPage from './pages/SettingsPage.vue'
+import Hosts from './views/Hosts.vue'
+import Keys from './views/Keys.vue'
+import Settings from './views/Settings.vue'
+import Terminal from './views/Terminal.vue'
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomePage
-  },
-  {
-    path: '/hosts',
-    name: 'hosts',
-    component: HostsPage
-  },
-  {
-    path: '/keys',
-    name: 'keys',
-    component: KeysPage
-  },
-  {
-    path: '/settings',
-    name: 'settings',
-    component: SettingsPage
-  },
-  {
-    path: '/terminal/:id',
-    name: 'terminal',
-    component: () => import('./pages/TerminalPage.vue')
-  }
+  { path: '/', redirect: '/hosts' },
+  { path: '/hosts', name: 'hosts', component: Hosts },
+  { path: '/keys', name: 'keys', component: Keys },
+  { path: '/settings', name: 'settings', component: Settings },
+  { path: '/terminal/:id', name: 'terminal', component: Terminal }
 ]
 
 const router = createRouter({

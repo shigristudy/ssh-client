@@ -15,7 +15,8 @@ fn main() {
             ssh::create_ssh_connection,
             ssh::send_ssh_data,
             ssh::read_ssh_data,
-            ssh::resize_pty
+            ssh::resize_pty,
+            ssh::close_ssh_connection  // Add this line
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

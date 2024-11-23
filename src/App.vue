@@ -33,6 +33,7 @@
 <script setup lang="ts">
 import { h, computed, ref, Component } from 'vue'
 import { useRouter } from 'vue-router'
+
 import { 
   NConfigProvider, 
   NMessageProvider, 
@@ -67,6 +68,7 @@ const handleCollapse = (value: boolean) => {
   collapsed.value = value
 }
 function renderIcon(icon: Component) {
+  return () => h(NIcon, null, { default: () => h(icon) })
 }
 const menuOptions = computed(() => {
   const baseOptions: MenuOption[] = [
@@ -134,10 +136,11 @@ async function handleTerminalClose(id: string) {
     }
     
     await terminalsStore.closeTerminal(id)
-    message.success('Terminal closed successfully')
+    console.error('Terminal closed successfully')
+    // message.success('Terminal closed successfully')
   } catch (error) {
     console.error('Failed to close terminal:', error)
-    message.error('Failed to close terminal')
+    // message.error('Failed to close terminal')
   }
 }
 
